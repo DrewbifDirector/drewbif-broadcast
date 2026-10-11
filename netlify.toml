@@ -1,0 +1,9 @@
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/broadcast"
+  to = "/.netlify/functions/broadcast"
+  status = 200
+  force = true
