@@ -22,8 +22,8 @@ function classify(text) {
   if (/^announcement\b[:\s-]*/i.test(t)) {
     return { type: "announcement", text: t.replace(/^announcement\b[:\s-]*/i, "").trim() || t };
   }
-  if (/💩/.test(t)) return { type: "review", sentiment: "bad", stars: 0, text: t };
-  const stars = (t.match(/⭐|🌟/g) || []).length;
+  if (/💩|:poop:|:hankey:|:shit:/i.test(t)) return { type: "review", sentiment: "bad", stars: 0, text: t };
+  const stars = (t.match(/⭐|🌟|:star:|:star2:|:stars:/gi) || []).length;
   if (stars > 0) return { type: "review", sentiment: "good", stars, text: t };
   return null; // ordinary chatter — ignore
 }
